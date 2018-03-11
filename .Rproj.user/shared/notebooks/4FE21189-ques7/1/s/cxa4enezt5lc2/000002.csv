@@ -1,3 +1,0 @@
-"0","is.palindrome <- function(word){"
-"0","  identical(word, paste(rev(strsplit(word,"""")[[1]]), collapse = """"))"
-"0","}"

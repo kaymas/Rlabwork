@@ -1,6 +1,0 @@
-"0","nth <- paste(1:12, c(""st"",""nd"",""rd"",rep(""th"",9))"
-"0","paste(month.abb, ""is the"", nth, ""month"", sep = "" - "", collapse = ""\n"")"
-"2","Error: unexpected symbol in:
-""nth <- paste(1:12, c(""st"",""nd"",""rd"",rep(""th"",9))
-paste""
-"
