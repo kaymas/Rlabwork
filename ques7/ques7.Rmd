@@ -1,0 +1,53 @@
+---
+title: "Question 7"
+author: "kaymas"
+output: github_document
+---
+
+## **Program:** Write a function that tests whether a string is a palindrome
+
+The entire code is written below for you to check out, but if you want the explanation it is at the end.
+
+```{r}
+is.palindrome <- function(word){
+  identical(word, paste(rev(strsplit(word,"")[[1]]), collapse = ""))
+}
+```
+
+
+### Examples
+
+```{r, echo=TRUE}
+is.palindrome("karatsuba")
+is.palindrome("nur ses run")
+is.palindrome("evilolive")
+```
+
+Output of `is.palindrome("karatsuba")` is `r is.palindrome("karatsuba")`  
+Output of `is.palindrome("nur ses run")` is `r is.palindrome("nur ses run")`  
+Output of `is.palindrome("evilolive")` is `r is.palindrome("evilolive")`
+
+### Explanation
+
+Starting from the outside
+
++ The **identical** function is used to reliably test if two objects are exact equal. It returns `TRUE` in this case and `FALSE` in every other case.
+Now the input string `word` and the string returned by the paste function are tested for equality.
+
++ The **paste** function converts its arguments to character strings and then concatenates them.
+collapse and sep are two arguments that can be passed to the paste function and its working can be shown as :
+```{r}
+nth <- paste(1:12, c("st","nd","rd",rep("th",9)), sep="")
+paste(month.abb, "is the", nth, "month", sep = " ", collapse = "; ")
+```
+
++ The **rev** function is used to provide the revered version of its arguments. It's argument can be a vector or any other object for which reversal is required. For example: 
+```{r}
+rev(nth)
+```
+
++ The **strsplit** function is used to split the elements of a character vector `x` according to the matches to the substring `split` within them. Now if `split` is of length 0, then the character vector `x` is split into single character. For example: (here `head` is used to take the first 3 elements of `nth`)
+```{r}
+strsplit(head(nth,3), "")
+```
+

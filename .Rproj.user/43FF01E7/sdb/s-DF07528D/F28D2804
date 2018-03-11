@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Question 7\"\nauthor: \"kaymas\"\noutput: github_document\n---\n\n## **Program:** Write a function that tests whether a string is a palindrome\n\nThe entire code is written below for you to check out, but if you want the explanation it is at the end.\n\n```{r}\nis.palindrome <- function(word){\n  identical(word, paste(rev(strsplit(word,\"\")[[1]]), collapse = \"\"))\n}\n```\n\n\n### Examples\n\n```{r, echo=TRUE}\nis.palindrome(\"karatsuba\")\nis.palindrome(\"nur ses run\")\nis.palindrome(\"evilolive\")\n```\n\nOutput of `is.palindrome(\"karatsuba\")` is `r is.palindrome(\"karatsuba\")`  \nOutput of `is.palindrome(\"nur ses run\")` is `r is.palindrome(\"nur ses run\")`  \nOutput of `is.palindrome(\"evilolive\")` is `r is.palindrome(\"evilolive\")`\n\n### Explanation\n\nStarting from the outside\n\n+ The **identical** function is used to reliably test if two objects are exact equal. It returns `TRUE` in this case and `FALSE` in every other case.\nNow the input string `word` and the string returned by the paste function are tested for equality.\n\n+ The **paste** function converts its arguments to character strings and then concatenates them.\ncollapse and sep are two arguments that can be passed to the paste function and its working can be shown as :\n```{r}\nnth <- paste(1:12, c(\"st\",\"nd\",\"rd\",rep(\"th\",9)), sep=\"\")\npaste(month.abb, \"is the\", nth, \"month\", sep = \" \", collapse = \"; \")\n```\n\n+ The **rev** function is used to provide the revered version of its arguments. It's argument can be a vector or any other object for which reversal is required. For example: \n```{r}\nrev(nth)\n```\n\n+ The **strsplit** function is used to split the elements of a character vector `x` according to the matches to the substring `split` within them. Now if `split` is of length 0, then the character vector `x` is split into single character. For example: (here `head` is used to take the first 3 elements of `nth`)\n```{r}\nstrsplit(head(nth,3), \"\")\n```\n\n",
+    "created" : 1520707296834.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3497916175",
+    "id" : "F28D2804",
+    "lastKnownWriteTime" : 1520757983,
+    "last_content_update" : 1520757983737,
+    "path" : "~/Documents/programs/kaymas_github/Rlabwork/ques7/ques7.Rmd",
+    "project_path" : "ques7/ques7.Rmd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
