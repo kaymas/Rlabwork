@@ -17,37 +17,37 @@ linearSearch <- function(v, el){
 }
 ```
 
+This is just to improve the output of the code to the console
+
+``` r
+lsExtend <- function(pos){
+  if(pos == -1) cat("Element not found","\n")
+  else cat("Element found at position:",pos,"\n")
+}
+```
+
 ### Examples
 
 ``` r
-spot = linearSearch(c("ba", "as", "sa"), "as")
-if(identical(spot, -1)){
-  cat("element not found","\n")
-}else{
-  cat("Element found at position", spot, "\n")
-}
+lsExtend(linearSearch(c("ba", "as", "sa"), "as"))
 ```
 
-    ## Element found at position 2
+    ## Element found at position: 2
 
 ``` r
-spot = linearSearch(c(12, 45, 64.6, 98.2, 22.1), 64.6)
-if(identical(spot, -1)){
-  cat("element not found","\n")
-}else{
-  cat("Element found at position", spot, "\n")
-}
+lsExtend(linearSearch(c(12, 45, 64.6, 98.2, 22.1), 64.6))
 ```
 
-    ## Element found at position 3
+    ## Element found at position: 3
 
 ``` r
-spot = linearSearch(c("ba","as","sa"), 64.6)
-if(identical(spot, -1)){
-  cat("element not found","\n")
-}else{
-  cat("Element found at position", spot, "\n")
-}
+lsExtend(linearSearch(64.6, 64.6))
 ```
 
-    ## element not found
+    ## Element found at position: 1
+
+``` r
+lsExtend(linearSearch(c("ba","as","sa"), 64.6))
+```
+
+    ## Element not found
