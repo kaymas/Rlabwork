@@ -1,0 +1,55 @@
+---
+title: "Question 3"
+author: "kaymas"
+output: github_document
+---
+
+## Program that asks the user for a number n and then prints the ouput as sum of numbers from 1 to n
+
+### Code
+
+```{r definition, echo = FALSE}
+inputFromUser <- function(){
+  num <- floor(runif(1,min = 1, max = 100))
+  return(num) 
+}
+```
+
+```{r}
+sum.n <- function(n){
+  sum <- 0
+  for(i in 1:n) sum = sum + i
+  return(sum)  
+}
+```
+
+##### Imitating input from user for this particular program
+```{r eval = FALSE}
+inputFromUser <- function(){
+  num <- floor(runif(1,min = 1, max = 100))
+  return(num) 
+}
+```
+
+##### Formating Output
+```{r}
+fmt.output <- function(num,val){
+  cat("Sum of numbers from",1,"to",num,"is :",val,"\n")
+}
+```
+
+### Examples
+
+```{r}
+x = inputFromUser()
+fmt.output(x, sum.n(x))
+
+x = inputFromUser()
+fmt.output(x, sum.n(x))
+
+x = inputFromUser()
+fmt.output(x, sum.n(x))
+
+x = inputFromUser()
+fmt.output(x, sum.n(x))
+```
