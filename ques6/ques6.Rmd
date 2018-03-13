@@ -1,0 +1,6 @@
+---
+title: "Question 6"
+author: "kaymas"
+output: github_document
+---
+

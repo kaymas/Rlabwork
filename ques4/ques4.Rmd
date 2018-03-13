@@ -1,0 +1,46 @@
+---
+title: "Question 4"
+author: "kaymas"
+output: github_document
+---
+
+## Program that prints multiplication table of a number from 1 till 12
+
+### Code
+
+```{r}
+mulTable <- function(i, num){
+  res <- c()
+  for(iterator in 1:i){
+    res <- c(res,paste(iterator,"*",num,"=",iterator*num))
+  }
+  return(res)
+}
+```
+
+##### Imitating input from user for this particular program(numbers are from 1 to 20)
+```{r}
+inputFromUser <- function(){
+  num <- floor(runif(1,min = 1, max = 20))
+  return(num) 
+}
+```
+
+##### Formating Output
+```{r}
+fmt.output <- function(vec){
+  cat(paste(vec,collapse = "\n"),"\n")
+
+}
+```
+
+### Examples
+
+```{r}
+fmt.output(mulTable(12,inputFromUser()))
+fmt.output(mulTable(12,inputFromUser()))
+fmt.output(mulTable(12,inputFromUser()))
+```
+
+
+
