@@ -4,3 +4,59 @@ author: "kaymas"
 output: github_document
 ---
 
+## Program to calculate the running total of a list
+
+### Code
+```{r}
+runningTotal <- function(l){
+  v <- unlist(l, use.names = FALSE)
+  return(cumsum(v))
+}
+```
+
+##### Generating a random number
+```{r}
+ranNum <- function(min,max,isInt = TRUE){
+  num <- runif(1,min = min, max = max)
+  if(isInt == TRUE){
+    num <- floor(num)
+  }
+  return(num) 
+}
+```
+
+##### Generating a list
+```{r}
+getRanList <- function(){
+  genList <- list()
+  size <- ranNum(4,10)
+  for(i in 1:size){
+    genList[[i]] <- ranNum(1,100,FALSE)
+  }
+  return(genList)
+}
+```
+
+### Examples
+
+##### Example 1
+```{r}
+tempList <- getRanList()
+tempVec <- runningTotal(tempList)
+tempList
+cat("running total is:",tempVec,"\n")
+```
+##### Example 2
+```{r}
+tempList <- getRanList()
+tempVec <- runningTotal(tempList)
+tempList
+cat("running total is:",tempVec,"\n")
+```
+##### Example 3
+```{r}
+tempList <- getRanList()
+tempVec <- runningTotal(tempList)
+tempList
+cat("running total is:",tempVec,"\n")
+```
