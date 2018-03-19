@@ -1,0 +1,37 @@
+---
+title: "Remove NA from matrix"
+author: "kaymas"
+output: github_document
+---
+
+## How to remove NA values from a matrix
+
+Suppose that you have a matrix like:
+```{r, echo=FALSE}
+dataMat <- matrix(floor(runif(20,min=5,max=100)),nrow=5,ncol=4,byrow=TRUE)
+dataMat[c(1,2,6,8)] <- NA
+dataMat
+```
+
+**First** we want to identify all the NAs in the matrix. To do so we can use the `is.na()` function that takes the matrix as the argument and returns a matrix with logical values of FALSE at positions that contains NA.
+
+```{r}
+is.na(dataMat)
+```
+
+**Second** we want to check the matrix returned by the function `is.na()` to remove any row that contains FALSE. To do this we can use the `apply()` function that takes 3 major arguments: 
+
+1. X -> an array or a matrix
+1. MARGIN -> a vector used to tell if we want to apply the fucntion over the rows(indicated by 1) or the        columns(indicated by 2) or both rows and columns(indicated by `c(1,2)` ).
+1. FUN -> the function to be applied
+
+```{r}
+naRows <- apply(is.na(dataMat),1,any)
+```
+
+apply returns a vector of logical values telling the the result of the function any applied to each row of the matrix.
+
+**Third** we have to select the rows from the data matrix that doesn't contain NA
+```{r}
+dataMat[!naRows,]
+```
