@@ -10,11 +10,7 @@ output: github_document
 
 ```{r}
 mulTable <- function(i, num){
-  res <- c()
-  for(iterator in 1:i){
-    res <- c(res,paste(iterator,"*",num,"=",iterator*num))
-  }
-  return(res)
+  return(paste(1:i,"*",num,"=",outer(1:i,num)))
 }
 ```
 
@@ -29,8 +25,7 @@ inputFromUser <- function(){
 ##### Formating Output
 ```{r}
 fmt.output <- function(vec){
-  cat(paste(vec,collapse = "\n"),"\n")
-
+  cat(vec,sep = "\n")
 }
 ```
 

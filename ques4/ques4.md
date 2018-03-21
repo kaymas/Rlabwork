@@ -9,11 +9,7 @@ Program that prints multiplication table of a number from 1 till 12
 
 ``` r
 mulTable <- function(i, num){
-  res <- c()
-  for(iterator in 1:i){
-    res <- c(res,paste(iterator,"*",num,"=",iterator*num))
-  }
-  return(res)
+  return(paste(1:i,"*",num,"=",outer(1:i,num)))
 }
 ```
 
@@ -30,8 +26,7 @@ inputFromUser <- function(){
 
 ``` r
 fmt.output <- function(vec){
-  cat(paste(vec,collapse = "\n"),"\n")
-
+  cat(vec,sep = "\n")
 }
 ```
 
@@ -58,32 +53,32 @@ fmt.output(mulTable(12,inputFromUser()))
 fmt.output(mulTable(12,inputFromUser()))
 ```
 
-    ## 1 * 2 = 2
-    ## 2 * 2 = 4
-    ## 3 * 2 = 6
-    ## 4 * 2 = 8
-    ## 5 * 2 = 10
-    ## 6 * 2 = 12
-    ## 7 * 2 = 14
-    ## 8 * 2 = 16
-    ## 9 * 2 = 18
-    ## 10 * 2 = 20
-    ## 11 * 2 = 22
-    ## 12 * 2 = 24
+    ## 1 * 17 = 17
+    ## 2 * 17 = 34
+    ## 3 * 17 = 51
+    ## 4 * 17 = 68
+    ## 5 * 17 = 85
+    ## 6 * 17 = 102
+    ## 7 * 17 = 119
+    ## 8 * 17 = 136
+    ## 9 * 17 = 153
+    ## 10 * 17 = 170
+    ## 11 * 17 = 187
+    ## 12 * 17 = 204
 
 ``` r
 fmt.output(mulTable(12,inputFromUser()))
 ```
 
-    ## 1 * 12 = 12
-    ## 2 * 12 = 24
-    ## 3 * 12 = 36
-    ## 4 * 12 = 48
-    ## 5 * 12 = 60
-    ## 6 * 12 = 72
-    ## 7 * 12 = 84
-    ## 8 * 12 = 96
-    ## 9 * 12 = 108
-    ## 10 * 12 = 120
-    ## 11 * 12 = 132
-    ## 12 * 12 = 144
+    ## 1 * 3 = 3
+    ## 2 * 3 = 6
+    ## 3 * 3 = 9
+    ## 4 * 3 = 12
+    ## 5 * 3 = 15
+    ## 6 * 3 = 18
+    ## 7 * 3 = 21
+    ## 8 * 3 = 24
+    ## 9 * 3 = 27
+    ## 10 * 3 = 30
+    ## 11 * 3 = 33
+    ## 12 * 3 = 36
