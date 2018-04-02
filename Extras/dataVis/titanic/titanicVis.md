@@ -57,9 +57,9 @@ Now if we look at the class of every column of titanic we can see that:
     ## Cabin -> character
     ## Embarked -> factor
 
-### Visualizations
+### Visualization of categorical data
 
-#### What is survival rate?
+#### What was the survival rate?
 
 > Since survived is a factor (categorical variable), we can use a bar chart as it is a great visualization tool for factors
 
@@ -100,7 +100,7 @@ ggplot(data = titanic, mapping = aes(x = Survived)) +
 
 ![](titanicVis_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
-#### What is survival rate by gender?
+#### What was the survival rate by gender?
 
 > We can use colour to examine the dimensions of the data
 
@@ -112,6 +112,93 @@ ggplot(data = titanic, mapping = aes(x = Sex,fill = Survived)) +
 
 ![](titanicVis_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
-If `fill` argument is given a categorical variable then the `aes` function tells the plot to fill geometric structures in this case the bars of the barchart to be filled with the counts proportional to the bar on the x axis.
+If `fill` argument is given a categorical variable then the `aes` function tells the plot to fill geometric structures, in this case the bars of the barchart, with the counts proportional to the bar on the x axis.
 
-> From this we can get the information that most males didn't survive or most females did.
+> From this we can get the information that most males didn't survive but most females did.
+
+#### What was the survival rate by the class of the ticket?
+
+``` r
+ggplot(data = titanic, mapping = aes(x = Pclass, fill = Survived)) + 
+  geom_bar() + 
+  labs(y = "passenger count", title = "Titanic survival rate by class ticket")
+```
+
+![](titanicVis_files/figure-markdown_github/unnamed-chunk-8-1.png)
+
+> Well, It is blatantly clear that the survival of third class ticket holders is way below second or first class ticket holders.
+
+#### What was the survival rate by class of the ticket and gender?
+
+``` r
+ggplot(data = titanic, mapping = aes(x = Sex, fill = Survived)) +
+  facet_wrap(~ Pclass) +
+  geom_bar() +
+  labs(y = "passenger count", title = "Titanic survival rate by class ticket and sex")
+```
+
+![](titanicVis_files/figure-markdown_github/unnamed-chunk-9-1.png)
+
+`ggplot` has this mechanism of faceting which further segments the data.
+
+### Visualization of continuous data
+
+#### What is the distribution of passenger ages?
+
+> Here ages is a numeric data and histograms really are a staple when it comes to numeric data as it very powerfully communicates the distribution of a variable.
+
+``` r
+ggplot(data = titanic, mapping = aes(x = Age)) + 
+  geom_histogram(binwidth = 5) + 
+  labs(title = "Titanic age distribution", x = "age(binwidth = 5)", y = "passenger count")
+```
+
+    ## Warning: Removed 177 rows containing non-finite values (stat_bin).
+
+![](titanicVis_files/figure-markdown_github/unnamed-chunk-10-1.png)
+
+Histogram's visual shape changes on the bases of value of binwidth. Setting binwidth equal to 5 states that we want to combine ages into blocks/bins of 5 years
+
+> Do note the warning messgae given above. It says that it wasn't able to procure ages from some of the rows since they contained non-finite values(same as not containing any value) and hence they were removed from consideration. So in this case `ggplot` handles empty value rows and you don't explictly have to remove them in fear of the function halting in error.
+
+#### What are the survival rates by age
+
+``` r
+ggplot(data = titanic, mapping = aes(x = Age, fill = Survived)) + 
+  geom_histogram(binwidth = 5) + 
+  labs(title = "Titanic survival rate by age", y = "passenger count", x = "age(binwidth = 5)")
+```
+
+    ## Warning: Removed 177 rows containing non-finite values (stat_bin).
+
+![](titanicVis_files/figure-markdown_github/unnamed-chunk-11-1.png)
+
+#### Plotting the survival rate by age, sex, and class
+
+##### Using a density plot
+
+``` r
+ggplot(data = titanic, mapping = aes(x = Age, fill = Survived)) +
+  facet_wrap(Sex ~ Pclass) +
+  geom_density(alpha = 0.5) +
+  labs(x = "age", y = "survival", title = "Titanic survival rates by age, sex, and pclass")
+```
+
+    ## Warning: Removed 177 rows containing non-finite values (stat_density).
+
+![](titanicVis_files/figure-markdown_github/unnamed-chunk-12-1.png)
+
+Here `alpha` argument used on `geom_density` is just the transparency level of the overlay of fill.
+
+##### Using a histogram
+
+``` r
+ggplot(data = titanic, mapping = aes(x = Age, fill = Survived)) +
+  facet_wrap(Sex ~ Pclass) + 
+  geom_histogram(binwidth = 5) +
+  labs(x = "age", y = "survived count", title = "Titanic survival rates by age, sex, and plcass")
+```
+
+    ## Warning: Removed 177 rows containing non-finite values (stat_bin).
+
+![](titanicVis_files/figure-markdown_github/unnamed-chunk-13-1.png)
