@@ -1,6 +1,6 @@
 Question 8
 ================
-kaymas
+samyak
 
 **Program:** Implement Linear Search
 ------------------------------------

@@ -1,6 +1,6 @@
 ---
 title: "Question 6"
-author: "kaymas"
+author: "samyak"
 output: github_document
 ---
 

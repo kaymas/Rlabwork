@@ -1,0 +1,12 @@
+---
+title: "Question 2"
+author: "samyak"
+output: github_document
+---
+
+## Program that prints hello world to the screen
+
+### Code
+```{r}
+cat('hello world',"\n")
+```

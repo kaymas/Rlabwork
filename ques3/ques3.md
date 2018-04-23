@@ -1,6 +1,6 @@
 Question 3
 ================
-kaymas
+samyak
 
 Program that asks the user for a number n and then prints the ouput as sum of numbers from 1 to n
 -------------------------------------------------------------------------------------------------
@@ -39,25 +39,25 @@ x = inputFromUser()
 fmt.output(x, sum.n(x))
 ```
 
-    ## Sum of numbers from 1 to 25 is : 325
+    ## Sum of numbers from 1 to 21 is : 231
 
 ``` r
 x = inputFromUser()
 fmt.output(x, sum.n(x))
 ```
 
-    ## Sum of numbers from 1 to 46 is : 1081
+    ## Sum of numbers from 1 to 78 is : 3081
 
 ``` r
 x = inputFromUser()
 fmt.output(x, sum.n(x))
 ```
 
-    ## Sum of numbers from 1 to 82 is : 3403
+    ## Sum of numbers from 1 to 21 is : 231
 
 ``` r
 x = inputFromUser()
 fmt.output(x, sum.n(x))
 ```
 
-    ## Sum of numbers from 1 to 15 is : 120
+    ## Sum of numbers from 1 to 4 is : 10
