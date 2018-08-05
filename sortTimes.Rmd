@@ -1,11 +1,43 @@
 ---
 title: "SortTimes"
-author: "kaymas"
+author: "Samyak Ahuja"
 date: "August 3, 2018"
 output: pdf_document
 ---
 
+```{r include=FALSE}
+
+library(ggplot2)
+```
+
 # Complexity for different Sorting Algorithms.
+
+## Helper Functions
+
+### Replicator
+
+```{r}
+replicator <- function(func){
+  ele <- seq(from = 0, to = 10000, by = 250)
+  ele <- ele[-1]
+  timeElapsed <- c()
+  for(n in ele){
+    timeElapsed <- c(timeElapsed, system.time(replicate(10, func(sample(x = 1:100, size = n, replace = TRUE))))[3] / 10)
+  }
+  return (data.frame(timeElapsed,ele))
+}
+```
+
+### Plotter
+
+```{r}
+plotter <- function(df){
+  ggplot(df, aes(timeElapsed, ele, color = timeElapsed)) +
+    geom_point(shape = 16, size = 5, show.legend = FALSE, alpha = 0.6) + 
+    theme_minimal() + 
+    scale_color_gradient(low = "#32aeff", high = "#f2aeff")
+}
+```
 
 ## Insertion Sort
 
@@ -35,13 +67,11 @@ insertionSort <- function(vec){
 insertionSort(c(1,2,99,-21,2,23,1))
 ```
 
-### RunTime
+### RunTime and Plot
 ```{r}
-system.time(replicate(10, insertionSort(sample(x = 1:100, size = 10, replace = TRUE)))) / 10
-system.time(replicate(10, insertionSort(sample(x = 1:100, size = 100, replace = TRUE)))) / 10
-system.time(replicate(10, insertionSort(sample(x = 1:100, size = 1000, replace = TRUE)))) / 10
-system.time(replicate(10, insertionSort(sample(x = 1:100, size = 10000, replace = TRUE)))) / 10
-#mean(replicate(10, system.time((insertionSort(sample(x = 1:100, size = 10000, replace = TRUE))))[3]))
+isdf <- replicator(insertionSort)
+isdf
+plotter(isdf)
 ```
 
 
@@ -90,12 +120,11 @@ mergeSort <- function(vec){
 mergeSort(c(12,-22,13,2,-33,2))
 ```
 
-### RunTime
+### RunTime and Plot
 ```{r}
-system.time(replicate(10, mergeSort(sample(x = 1:100, size = 10, replace = TRUE)))) / 10
-system.time(replicate(10, mergeSort(sample(x = 1:100, size = 100, replace = TRUE)))) / 10
-system.time(replicate(10, mergeSort(sample(x = 1:100, size = 1000, replace = TRUE)))) / 10
-system.time(replicate(10, mergeSort(sample(x = 1:100, size = 10000, replace = TRUE)))) / 10
+msdf <- replicator(mergeSort)
+msdf
+plotter(msdf)
 ```
 
 
@@ -119,11 +148,10 @@ quickSort <- function(vec){
 quickSort(c(12,-22,13,2,-33,2))
 ```
 
-### RunTime
+### RunTime and Plot
 ```{r}
-system.time(replicate(10, quickSort(sample(x = 1:100, size = 10, replace = TRUE)))) / 10
-system.time(replicate(10, quickSort(sample(x = 1:100, size = 100, replace = TRUE)))) / 10
-system.time(replicate(10, quickSort(sample(x = 1:100, size = 1000, replace = TRUE)))) / 10
-system.time(replicate(10, quickSort(sample(x = 1:100, size = 10000, replace = TRUE)))) / 10
+qsdf <- replicator(quickSort)
+qsdf
+plotter(qsdf)
 ```
 
